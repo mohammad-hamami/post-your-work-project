@@ -108,9 +108,9 @@ def load_data(city, month, day):
 
 
 def time_stats(df):
-    """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
+    # Use 'global' only if absolutely necessary, assuming month_inp and day_inp are defined globally elsewhere
     global month_inp
     global day_inp
     start_time = time.time()
@@ -120,15 +120,16 @@ def time_stats(df):
         popular_month = df['Month'].mode()[0]
         print(f"Most Popular Start Month: {popular_month}")
 
-    # display the most common day of week
+    # display the most common day of week (check is only performed if day_inp is 'all')
     if day_inp == 'all':
         popular_day = df['Day'].mode()[0]
         print(f"Most Popular Start day: {popular_day}")
 
     # display the most common start hour
+    # Ensure this is done first as it's an operation that modifies the DataFrame
     df['hour'] = df['Start Time'].dt.hour
 
-    
+    # Calculate mode directly without extra blank line
     popular_hour = df['hour'].mode()[0]
     print(f"Most Popular Start Hour: {popular_hour}")
 
