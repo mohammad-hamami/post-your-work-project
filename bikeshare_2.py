@@ -281,3 +281,4 @@ def main():
 
 if __name__ == "__main__":
 	main()
+##check if it is the main file 
